@@ -20,10 +20,17 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% hypothesis theta is sigmoid theta-transpose * x
+% seems to be swapped in our case to X * theta
+h = sigmoid(X * theta);
 
+y_ones = log(h) .* -1 .* y;
+y_zeros = log(1 .- h) .* -1 .* (1 .- y);
+J = (sum(y_ones) + sum(y_zeros)) / m;
 
+grad = ((sigmoid(X * theta) - y)' * X)' ./ m ;
 
-
+%theta = theta - alpha / m * ((X * theta - y)'* X)';
 
 
 
