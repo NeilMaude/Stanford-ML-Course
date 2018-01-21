@@ -20,7 +20,11 @@ S = zeros(n);
 %       number of examples).
 %
 
+% compute covariance matrix
+sigma = (X' * X) ./ m;
 
+% Perform single value decomposition using in-build svd function 
+[U, S, V] = svd(sigma);
 
 
 
