@@ -16,7 +16,10 @@ sim = 0;
 %
 %
 
+% squared pythagorean magnitude over 2 sigma squared 
+% then take exponent of the negative of this value
 
+sim = e^(-(sum((x1-x2).^2))/(2*sigma^2));
 
 
 
