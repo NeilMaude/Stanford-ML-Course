@@ -11,7 +11,7 @@ function [C, sigma] = dataset3Params(X, y, Xval, yval)
 C = 1;
 sigma = 0.1;      % found 0.1 as optimal, was 0.3 default;
 
-testing = true;    % set true to run the whole process
+testing = false;    % set true to run the whole process
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Fill in this function to return the optimal C and sigma

@@ -107,8 +107,8 @@ C = 1; sigma = 0.1;
 % convergence.
 
 % comment out to speed up working on later elements of the exercise
-%model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)); 
-%visualizeBoundary(X, y, model);
+model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)); 
+visualizeBoundary(X, y, model);
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
