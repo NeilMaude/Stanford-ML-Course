@@ -40,19 +40,32 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+% this is the hard work way of calculating the cost function:
+%for i = 1:num_movies
+%  for j = 1:num_users
+%    if R(i,j) == 1
+%      J = J + (( X(i,:) * (Theta(j,:)' )) - Y(i,j))^2;
+%    end
+%  end
+%end
+%J = J / 2;    
 
+% vectorised implementation of cost function calculation
+diff = (X*Theta'-Y);
+J = sum((diff.^2)(R==1))/2;
 
+% Gradients
+% unregularized vectorized implementation
+X_grad = (diff.*R)*Theta;                 
+Theta_grad = ((diff.*R)'*X);              
 
+% Regularise the cost function:
+J = J + lambda*sum(sum(Theta.^2))/2;  % theta terms
+J = J + lambda*sum(sum(X.^2))/2;      % x terms 
 
-
-
-
-
-
-
-
-
-
+% Regularise the gradient steps 
+X_grad = X_grad + (lambda * X);               % X params
+Theta_grad = Theta_grad + (lambda * Theta);   % theta params 
 
 
 % =============================================================
